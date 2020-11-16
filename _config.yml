@@ -2,7 +2,7 @@
 title: Johannes Schroth
 email: johannesschroth11@gmail.com
 description: # this means to ignore newlines until "baseurl:"
-  Hi this is Johannes
+  Hi this is Johannes   
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jschroth_
