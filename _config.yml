@@ -1,18 +1,37 @@
 
 title: Johannes Schroth
 email: johannesschroth11@gmail.com
-description: # this means to ignore newlines until "baseurl:"
-  Hi this is Johannes   
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+description:
+baseurl: # the subpath of your site, e.g. /blog
+url: # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jschroth_
 github_username:  JohannesSchroth
 
 # Build settings
-# theme: jekyll-theme-yat
 plugins:
   - jekyll-feed
 remote_theme: "jeffreytse/jekyll-theme-yat"
+
+yat:
+  date_format: "%b %d, %Y"
+
+header_transparent: true
+
+night_mode: "off"
+
+header_pages:
+    - index.html
+    - archives.html
+    - categories.html
+    - tags.html
+    - about.md
+
+
+
+
+
+
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
