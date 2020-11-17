@@ -2,7 +2,7 @@
 layout: post
 title: Test markdown
 subtitle: Each post also has a subtitle
-categories: Data Analysis
+categories: Data-Analysis
 tags: [test]
 ---
 
