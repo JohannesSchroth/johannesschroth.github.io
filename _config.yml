@@ -8,13 +8,8 @@ twitter_username: jschroth_
 github_username:  JohannesSchroth
 
 remote_theme: "jeffreytse/jekyll-theme-yat"
+
 # Build settings
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-paginate
-  - jekyll-spaceship
 
 yat:
   date_format: "%b %d, %Y"
@@ -29,7 +24,12 @@ header_pages:
     - categories.html
     - about.md
 
-
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-spaceship
 
 
 
