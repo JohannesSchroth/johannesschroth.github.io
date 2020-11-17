@@ -7,10 +7,14 @@ url: # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jschroth_
 github_username:  JohannesSchroth
 
+remote_theme: "jeffreytse/jekyll-theme-yat"
 # Build settings
 plugins:
   - jekyll-feed
-remote_theme: "jeffreytse/jekyll-theme-yat"
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-spaceship
 
 yat:
   date_format: "%b %d, %Y"
