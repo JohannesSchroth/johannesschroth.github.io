@@ -19,10 +19,10 @@ header_transparent: true
 night_mode: "off"
 
 header_pages:
-  - _pages/index.html
-  - _pages/archives.html
-  - _pages/categories.html
-  - _pages/about.md
+  - index.html
+  - archives.html
+  - categories.html
+  - about.md
 
 plugins:
   - jekyll-feed
