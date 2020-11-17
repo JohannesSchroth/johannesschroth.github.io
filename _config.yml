@@ -9,10 +9,10 @@ twitter_username: jschroth_
 github_username:  JohannesSchroth
 
 # Build settings
-theme: minima
+# theme: jekyll-theme-yat
 plugins:
   - jekyll-feed
-
+remote_theme: "jeffreytse/jekyll-theme-yat"
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
