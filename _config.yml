@@ -22,7 +22,7 @@ header_pages:
   - index.html
   - archives.html
   - categories.html
-  - about.md
+  - about.html
 
 plugins:
   - jekyll-feed
