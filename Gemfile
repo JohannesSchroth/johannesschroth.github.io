@@ -3,7 +3,7 @@ source "https://rubygems.org"
 #gem "jekyll", "~> 4.1.1"
 
 
-gem "github-pages", group: :jekyll_plugins
+#gem "github-pages", group: :jekyll_plugins
 gem 'commonmarker'
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
