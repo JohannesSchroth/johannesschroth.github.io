@@ -19,3 +19,15 @@ Hi, my name is Johannes, and I'm currently a second year PhD Student at the Will
 <audio id="myaudio" src="assets/my_audio.mp3"></audio>
 <button onmouseover="document.getElementById('myaudio').play()">Hover me</button>
 
+<script language="javascript" type="text/javascript">
+    function playSound(soundfile) {
+        document.getElementById("dummy").innerHTML=
+        "<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+    }
+</script>
+
+<span id="dummy"></span>
+<p><a href="#"
+ onmouseover="playSound('assets/my_audio.mp3');">hover here!
+ </a>
+ </p>
