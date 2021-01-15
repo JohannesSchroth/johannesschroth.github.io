@@ -1,15 +1,37 @@
-<footer class="site-footer h-card">
+<html>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+</style>
+
+<footer class="site-footer h-card">
 <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
     <div class="site-footer-inner">
-      <div class="footer-col rss-subscribe">Subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></div>
+      
       <a href="https://twitter.com/JohannesSchroth" class="fa fa-twitter"></a>
       <a href="https://www.linkedin.com/in/johannes-schroth-bb8856115/" class="fa fa-linkedin"></a>
+      <a href="{{ "/feed.xml" | relative_url }}" class="fa fa-rss"></a>
+
       <div>Built on top of <a title="Jekyll is a simple, blog-aware, static site
         generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
         another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
     </div>
   </div>
 </footer>
+</html>
