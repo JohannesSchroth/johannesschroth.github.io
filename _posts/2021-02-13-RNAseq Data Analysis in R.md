@@ -58,9 +58,12 @@ plot1 <- VariableFeaturePlot(cds)
 LabelPoints(plot1, top10, repel = TRUE)
 
 ```
-<img src="/assets/images/rnaseqinr/variablefeatureplot.png" width="300" height="300" style="display: block; margin-left: auto; margin-right: auto;"/>
+<img src="/assets/images/rnaseqinr/variablefeatureplot.png" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto;"/>
 
-#### Dimensionality Reduction and Clustering
+### Dimensionality Reduction and Clustering
+
+First we run a PCA for an initial dimensionality reduction, which we will later load into UMAP.
+
 ```
 cds <- RunPCA(cds)
 
@@ -70,6 +73,10 @@ VizDimLoadings(cds, dims = 1:2, reduction = "pca")
 DimPlot(object = cds, reduction = "pca")
 DimHeatmap(object = cds, reduction = "pca", cells = 200, balanced = TRUE)
 
+```
+<img src="/assets/images/rnaseqinr/pcaplot.png" width="900" height="450" style="display: block; margin-left: auto; margin-right: auto;"/>
+
+```
 # Find cluster number
 ElbowPlot(object = cds)
 
@@ -81,6 +88,48 @@ cds <- FindClusters(cds, resolution = 0.5, algorithm = 1)
 cds <- RunUMAP(cds, reduction = "pca", dims = 1:15)
 
 DimPlot(cds, reduction = "umap")
+
+# Find all variable markers between clusters
+markers <- FindAllMarkers(cds)
+
+# Top 5 Clusters per marker
+top5 <- markers %>% group_by(cluster) %>% top_n(5, avg_logFC)
+
+# Plotting
+DoHeatmap(object = cds, features = top5$gene, label = TRUE)
+
+FeaturePlot(object = cds, features = top5$gene, cols = c("grey", "red"), reduction = "umap")
+
+# Specific gene ex. CD27
+DoHeatmap(object = cds, features = 'CD27', label = TRUE)
+
+
+## Monocle for Trajectory inference ----
+## https://cole-trapnell-lab.github.io/monocle3/docs/starting/
+
+library(monocle3)
+
+path <- '.../RNAseq analysis/CD8 T cells'
+
+cds <- load_cellranger_data(path)
+
+cds <- preprocess_cds(cds)
+plot_pc_variance_explained(cds)
+
+cds <- align_cds(cds)
+
+cds <- reduce_dimension(cds)
+
+cds <- cluster_cells(cds)
+plot_cells(cds, color_cells_by = 'cluster')
+
+cds <- learn_graph(cds)
+cds <- order_cells(cds)
+
+plot_cells(cds, color_cells_by="pseudotime", label_cell_groups=FALSE)
+
+
+
 ```
 
 
