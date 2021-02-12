@@ -4,7 +4,7 @@ title: Flow-Cytometry Data Analysis in R
 subheading: How to analyse flow cytometry data in R.
 author: Johannes
 categories: Data-Science
-banner: assets/images/banners/flowinR_banner.png
+banner: assets/images/banners/flowinr_banner.png
 ---
 ## Flow Cytometry Data
 Flow cytometry is a powerful tool to analyse cells based on their size, granularity and expression of various intracellular and membrane bound proteins. Thereby, the datasets it produces are multidimensional, with thousands of cells and protein expression levels for each of these. As flow cytometry relies on lasers to analyse expression patterns, overlap between the laser emission spectra can lead to a false amplification of the fluoresensce signal. This requires the data to be transformed based on a spillover matrix calculated from compensation controls aquired with the samples. These preprocessing steps can be done in R, but are much easier in FlowJo, so that is what we'll do here.
@@ -113,7 +113,7 @@ nrow(df)[1] 10000
 
 ### Clustering
 We are now ready to start analysing our data. First we will use the Phenograph algorithm to cluster the data into different cell populations. We need to specify which markers we want to use for clustering. If you are using a large dataset I recommend using the following multicore version of Phenograph instead - 
-<a href="https://github.com/sararselitsky/FastPG" target="_blank">FastPG</a>
+<a href="https://github.com/sararselitsky/FastPG" target="_blank">FastPG</a>.
 
 ```
 cols <- c('CD4', 'CD8', 'Ki67', 'CD27', 'CD45RA', 'CD28', 'KLRG1', 'CCR7')
