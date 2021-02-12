@@ -101,7 +101,7 @@ df %>%
   facet_wrap(~key, scales = 'free') +
   theme_classic()
 ```
-<img src="/assets/images/flowinR/density_plot.png" width="600" height="400" style="display: block; margin-left: auto; margin-right: auto;"/>
+<img src="/assets/images/flowinR/density_plot.png" width="411" height="294" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 Optional: If your dataset is very large, for the purposes of this example I suggest downsampling to save some time. Here we downsample the data to 5k cells per unique sample.
 
@@ -140,7 +140,7 @@ df %>%
           row_names_side = 'left', heatmap_legend_param = list(title = 'Z-score'),
           col = circlize::colorRamp2(seq(min(.), max(.), length = 3), c('#4575B4', 'white', '#D73027')))
 ```
-<img src="/assets/images/flowinR/heatmap.png" width="1200" height="800" style="display: block; margin-left: auto; margin-right: auto;"/>
+<img src="/assets/images/flowinR/heatmap.png" width="400" height="300" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 
 
