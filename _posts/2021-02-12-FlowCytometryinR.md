@@ -155,10 +155,16 @@ df[c('tSNE1', 'tSNE2')] <- df %>%
   .$Y
 ```
 And plotting.
-```
 
 ```
-
+ggplot(df, aes(tSNE1, tSNE2)) +
+  geom_density2d(colour = 'grey90') +
+  geom_point(aes(fill = as.factor(clusters)), alpha = 0.8, colour="black", pch = 21) +
+  geom_label_repel(data = t_clus_ds, aes(label = clusters, fill = as.factor(clusters)), colour = 'black') +
+  theme_classic() +
+  theme(legend.position = 'none')
+```
+<img src="/assets/images/flowinR/tsne.png" width="400" height="300" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 
 
