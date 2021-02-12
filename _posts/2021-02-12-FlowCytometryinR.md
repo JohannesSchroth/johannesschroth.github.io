@@ -4,7 +4,7 @@ title: Flow-Cytometry Data Analysis in R
 subheading: How to analyse flow cytometry data in R.
 author: Johannes
 categories: Data-Science
-banner: assets/images/banners/cytoda_banner.png
+banner: assets/images/banners/flowinR_banner.png
 ---
 
 
@@ -103,7 +103,7 @@ df %>%
   facet_wrap(~key, scales = 'free') +
   theme_classic()
 ```
-<img src="/assets/images/flowinR/density_plot.png" width="400" height="400" style="display: block; margin-left: auto; margin-right: auto;"/>
+<img src="/assets/images/flowinR/density_plot.png" width="600" height="400" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 Optional: If your dataset is very large, for the purposes of this example I suggest downsampling to save some time. Here we downsample the data to 5k cells per unique sample.
 
@@ -114,8 +114,35 @@ nrow(df)[1] 10000
 ```
 
 ### Clustering
-We are now ready to start analysing our data. First we will use the Phenograph algorithm to cluster the data into different cell populations. If you are using a large dataset I recommend using the following multicore version of Phenograph instead - [FastPG](https://github.com/sararselitsky/FastPG)
+We are now ready to start analysing our data. First we will use the Phenograph algorithm to cluster the data into different cell populations. We need to specify which markers we want to use for clustering. If you are using a large dataset I recommend using the following multicore version of Phenograph instead - [FastPG](https://github.com/sararselitsky/FastPG)
 
+```
+cols <- c('CD4', 'CD8', 'Ki67', 'CD27', 'CD45RA', 'CD28', 'KLRG1', 'CCR7')
+
+df['clusters'] <- df %>%
+  select(cols) %>%
+  Rphenograph(., k = 30) %>%
+  .$membership
+
+table(df$clusters)   1    2    3    4    5    6    7    8    9   10   11   12   13   44  711 1048 1048  416  204  935  834 1291 1283  588  823  775 
+```
+Now that we have calculated our cell clusters, let's visualise their marker expression. 
+
+```
+df %>%
+  select(cols, clusters) %>%
+  group_by(clusters) %>%
+  summarise_all(median) %>%
+  remove_rownames() %>%
+  column_to_rownames('clusters') %>%
+  as.matrix() %>%
+  pheatmap:::scale_rows() %>%
+  Heatmap(rect_gp = gpar(col = "white", lwd = 2),
+          column_names_rot = 45, show_heatmap_legend = T,
+          row_names_side = 'left', heatmap_legend_param = list(title = 'Z-score'),
+          col = circlize::colorRamp2(seq(min(.), max(.), length = 3), c('#4575B4', 'white', '#D73027')))
+```
+<img src="/assets/images/flowinR/heatmap.png" width="600" height="400" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 
 
