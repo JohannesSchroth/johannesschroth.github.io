@@ -103,7 +103,7 @@ df %>%
   facet_wrap(~key, scales = 'free') +
   theme_classic()
 ```
-![](assets/images/flowinR/density_plot.png)
+<img src="/assets/images/flowinR/density_plot.png" width="500" height="500" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 Optional: If your dataset is very large, for the purposes of this example I suggest downsampling to save some time. Here we downsample the data to 5k cells per unique sample.
 
