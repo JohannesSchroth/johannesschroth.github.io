@@ -31,6 +31,7 @@ library(tidyverse)
 library(rsvd)
 library(cytofkit2)
 library(ComplexHeatmap)
+library(Rtsne)
 ```
 Some of the algorithms we'll be using have a random component to them. We want to keep this constant to ensure reproducibility. We can do this with the following command. The ```set.seed()``` function sets the starting number used to generate a sequence of random numbers.
 
@@ -143,7 +144,20 @@ df %>%
 <img src="/assets/images/flowinR/heatmap.png" width="400" height="300" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 ### Dimensionality Reduction
-Next, we can implement dimensionality reduction algorithms such as tSNE (t-distributed Stochastic Neighbourhood Embedding) or UMAP (Uniform Manifold Approximation and Projection), to help us visualise the data. Again I recommend using a multicore implementation of these if you are using a large dataset - [Flt-SNE](https://github.com/KlugerLab/FIt-SNE).
+Next, we can implement dimensionality reduction algorithms such as tSNE (t-distributed Stochastic Neighbourhood Embedding) or UMAP (Uniform Manifold Approximation and Projection), to help us visualise the data. Again I recommend using a multicore implementation of these if you are using a large dataset - [Flt-SNE](https://github.com/KlugerLab/FIt-SNE). Perplexity and other hyper-parameters have a big impact on the final embedding, I recommend using values specified as in this [paper](https://www.nature.com/articles/s41467-019-13056-x).
+
+```
+df[c('tSNE1', 'tSNE2')] <- df %>%
+  select(cols) %>%
+  Rtsne(perplexity = nrow(.)/100,
+        theta = 0.5, 
+        num_threads = 0) %>%
+  .$Y
+```
+And plotting.
+```
+
+```
 
 
 
@@ -152,9 +166,6 @@ Next, we can implement dimensionality reduction algorithms such as tSNE (t-distr
 
 
 
-
-
-sdf
 
 
 
