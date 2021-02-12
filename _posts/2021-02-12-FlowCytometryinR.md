@@ -8,14 +8,13 @@ banner: assets/images/banners/flowinR_banner.png
 ---
 ## Flow Cytometry Data
 Flow cytometry is a powerful tool to analyse cells based on their size, granularity and expression of various intracellular and membrane bound proteins. Thereby, the datasets it produces are multidimensional, with thousands of cells and protein expression levels for each of these. As flow cytometry relies on lasers to analyse expression patterns, overlap between the laser emission spectra can lead to a false amplification of the fluoresensce signal. This requires the data to be transformed based on a spillover matrix calculated from compensation controls aquired with the samples. These preprocessing steps can be done in R, but are much easier in FlowJo, so that is what we'll do here.
-
-[Click to learn more about flow cytometry.](https://www.bio-rad-antibodies.com/introduction-to-flow-cytometry.html?JSESSIONID_STERLING=59BC83F7E58F1788511FEBA9A1C057C5.ecommerce2&evCntryLang=UK-en&cntry=UK&thirdPartyCookieEnabled=true)
+<a href="https://www.bio-rad-antibodies.com/introduction-to-flow-cytometry.html?JSESSIONID_STERLING=59BC83F7E58F1788511FEBA9A1C057C5.ecommerce2&evCntryLang=UK-en&cntry=UK&thirdPartyCookieEnabled=true" target="_blank">Click to learn more about flow cytometry.</a>
 
 ## Data Preprocessing in FlowJo
 As we want to focus more on the R side of things, I won't spend too much time explaining how to use FlowJo. Briefly, we want to compensate the data to save us from having to do it in R, and we then want to gate our population of interest to mitigate some of the background noise. For example, if you want to look at T cells, you would gate: Lymphocytes &rarr; Single Cells &rarr; Live Cells &rarr; CD3+ Cells.
 #####Here are some links you may find useful:
-- [Compensating Flow Cytometry Data in FlowJo](https://docs.flowjo.com/flowjo/experiment-based-platforms/plat-comp-overview/)
-- [How to gate populations of interest](https://docs.flowjo.com/flowjo/graphs-and-gating/)
+- <a href="https://docs.flowjo.com/flowjo/experiment-based-platforms/plat-comp-overview/" target="_blank">Compensating Flow Cytometry Data in FlowJo</a>
+- <a href="https://docs.flowjo.com/flowjo/graphs-and-gating/" target="_blank">How to gate populations of interest</a>
 
 Assuming you have compensated and pregated your data, we can now move on to exporting it. Select all your populations of interest (ex. all CD3+ gates), right click and select "Export/Concatenate Populations", under parameters select "All compensated parameters", rename your files and click export. 
 Now we can move on to R.
@@ -113,7 +112,8 @@ nrow(df)[1] 10000
 ```
 
 ### Clustering
-We are now ready to start analysing our data. First we will use the Phenograph algorithm to cluster the data into different cell populations. We need to specify which markers we want to use for clustering. If you are using a large dataset I recommend using the following multicore version of Phenograph instead - [FastPG](https://github.com/sararselitsky/FastPG)
+We are now ready to start analysing our data. First we will use the Phenograph algorithm to cluster the data into different cell populations. We need to specify which markers we want to use for clustering. If you are using a large dataset I recommend using the following multicore version of Phenograph instead - 
+<a href="https://github.com/sararselitsky/FastPG" target="_blank">FastPG</a>
 
 ```
 cols <- c('CD4', 'CD8', 'Ki67', 'CD27', 'CD45RA', 'CD28', 'KLRG1', 'CCR7')
@@ -144,7 +144,8 @@ df %>%
 <img src="/assets/images/flowinR/heatmap.png" width="400" height="300" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 ### Dimensionality Reduction
-Next, we can implement dimensionality reduction algorithms such as tSNE (t-distributed Stochastic Neighbourhood Embedding) or UMAP (Uniform Manifold Approximation and Projection), to help us visualise the data. Again I recommend using a multicore implementation of these if you are using a large dataset - [Flt-SNE](https://github.com/KlugerLab/FIt-SNE). Perplexity and other hyper-parameters have a big impact on the final embedding, I recommend using values specified as in this [paper](https://www.nature.com/articles/s41467-019-13056-x).
+Next, we can implement dimensionality reduction algorithms such as tSNE (t-distributed Stochastic Neighbourhood Embedding) or UMAP (Uniform Manifold Approximation and Projection), to help us visualise the data. Again I recommend using a multicore implementation of these if you are using a large dataset - 
+<a href="https://github.com/KlugerLab/FIt-SNE" target="_blank">Flt-SNE</a>. Perplexity and other hyper-parameters have a big impact on the final embedding, I recommend using values specified as in this <a href="https://www.nature.com/articles/s41467-019-13056-x" target="_blank">paper</a>.
 
 ```
 df[c('tSNE1', 'tSNE2')] <- df %>%
@@ -164,7 +165,7 @@ ggplot(df, aes(tSNE1, tSNE2)) +
   theme_classic() +
   theme(legend.position = 'none')
 ```
-<img src="/assets/images/flowinR/tsne.png" width="400" height="300" style="display: block; margin-left: auto; margin-right: auto;"/>
+<img src="/assets/images/flowinR/tsne.png" width="500" height="500" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 
 
