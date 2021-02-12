@@ -6,8 +6,6 @@ author: Johannes
 categories: Data-Science
 banner: assets/images/banners/flowinR_banner.png
 ---
-
-
 ## Flow Cytometry Data
 Flow cytometry is a powerful tool to analyse cells based on their size, granularity and expression of various intracellular and membrane bound proteins. Thereby, the datasets it produces are multidimensional, with thousands of cells and protein expression levels for each of these. As flow cytometry relies on lasers to analyse expression patterns, overlap between the laser emission spectra can lead to a false amplification of the fluoresensce signal. This requires the data to be transformed based on a spillover matrix calculated from compensation controls aquired with the samples. These preprocessing steps can be done in R, but are much easier in FlowJo, so that is what we'll do here.
 
