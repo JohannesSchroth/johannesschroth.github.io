@@ -142,9 +142,8 @@ df %>%
 ```
 <img src="/assets/images/flowinR/heatmap.png" width="400" height="300" style="display: block; margin-left: auto; margin-right: auto;"/>
 
-
-
-
+### Dimensionality Reduction
+Next, we can implement dimensionality reduction algorithms such as tSNE (t-distributed Stochastic Neighbourhood Embedding) or UMAP (Uniform Manifold Approximation and Projection), to help us visualise the data. Again I recommend using a multicore implementation of these if you are using a large dataset - [Flt-SNE](https://github.com/KlugerLab/FIt-SNE).
 
 
 
