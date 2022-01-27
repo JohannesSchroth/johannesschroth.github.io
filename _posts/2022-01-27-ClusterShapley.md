@@ -4,7 +4,7 @@ title: Shapley Values for Cytometry Data Interpretation
 subheading: A short exploration of how shapley values can be used to interpret dimensionality reduction results from cytometry data.
 author: Johannes
 categories: Data-Science
-banner: assets/images/bannes/generic_banner.png
+banner:
 ---
 
 ## Introduction
