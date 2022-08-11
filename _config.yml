@@ -31,6 +31,7 @@ plugins:
   - jekyll-paginate
   - jekyll-spaceship
 
+google_analytics: G-46HS9DX6GD
 
 # Exclude from processing.
 # The following items will not be processed, by default.
