@@ -1,4 +1,5 @@
 home:
   heading: "Research Blog"
-  subheading: "Hi, my name is Johannes and I work as a postdoc in immunology.\nThis research blog serves as my archive for ideas and data-science tutorials."
+  subheading: "Hi, my name is Johannes and I work as a postdoc in immunology.
+  This research blog serves as my archive for ideas and data-science tutorials."
   banner: "assets/images/banners/home.jpeg"

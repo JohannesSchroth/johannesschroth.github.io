@@ -16,7 +16,7 @@ yat:
 
 header_transparent: true
 
-night_mode: "off"
+night_mode: "on"
 
 header_pages:
   - index.html
